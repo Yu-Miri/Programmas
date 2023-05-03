@@ -1,4 +1,4 @@
 import itertools
 
 def solution(nums):
-    return min(len(list(set(nums))), len(nums)/2)
+    return min(len(set(nums)), len(nums)/2)

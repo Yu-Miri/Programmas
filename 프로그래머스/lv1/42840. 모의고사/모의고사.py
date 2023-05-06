@@ -1,50 +1,18 @@
-# def solution(answers):
-#     su1 = [1, 2, 3, 4, 5]
-#     su2 = [2, 1, 2, 3, 2, 4, 2, 5]
-#     su3 = [3, 3, 1, 1, 2, 2, 4, 5]
-#     num_list = [0, 0, 0]
-
-#     # for i in range(len(answers)):
-#     #     if su1[i] == answers[i]:
-#     #         num_list[0] += 1
-#     #     if su2[i] == answers[i]:
-#     #         num_list[1] += 1
-#     #     if su3[i] == answers[i]:
-#     #         num_list[2] += 1
-#     for i in range(len(answers)):
-#         if su1[i%5] == answers[i]:
-#             num_list[0] += 1
-#         if su2[i%8] == answers[i]:
-#             num_list[1] += 1
-#         if su3[i%10] == answers[i]:
-#             num_list[2] += 1
-
-#     best_nums = []
-#     for idx, num in enumerate(num_list):
-#         if num == max(num_list):
-#             best_nums.append(idx+1)
-
-#     return best_nums
-
 def solution(answers):
-    
-    answer = []
-    score = [0,0,0]
-    
-    student1 = [1,2,3,4,5]
-    student2 = [2,1,2,3,2,4,2,5]
-    student3 = [3,3,1,1,2,2,4,4,5,5]
-    
-    for i in range(len(answers)) :
-        if answers[i] == student1[i%5] :
-            score[0] += 1
-        if answers[i] == student2[i%8] :
-            score[1] += 1
-        if answers[i] == student3[i%10] :
-            score[2] += 1
-        
-    for idx, num in enumerate(score) :
-        if num == max(score) :
-            answer.append(idx +1)
-    
-    return answer
+    #각 수포자가 찍는 패턴을 리스트에 선언
+    std1 = [1,2,3,4,5]
+    std2 = [2,1,2,3,2,4,2,5]
+    std3 = [3,3,1,1,2,2,4,4,5,5]
+
+    correct_num = [0, 0, 0]
+    for idx, ans in enumerate(answers): #정답지 패턴의 길이만큼 for문
+        if std1[idx%len(std1)] == ans: # i를 수포자의 패턴 길이로 나눠서 인덱스를 반복
+            correct_num[0] += 1 # 정답과 같다면 해당 인덱스에 1을 더하기
+        if std2[idx%len(std2)] == ans:
+            correct_num[1] += 1
+        if std3[idx%len(std3)] == ans:
+            correct_num[2] += 1
+
+    best = max(correct_num)
+    return [idx+1 for idx, num in enumerate(correct_num) if num == best]
+    # 정답 개수의 인덱스와 값을 for문돌면서 값과 가장 높은 값이 같다면 idx에 1을 더해서 return

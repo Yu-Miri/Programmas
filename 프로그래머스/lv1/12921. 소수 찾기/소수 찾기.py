@@ -12,5 +12,5 @@ def solution(n):
     num = set(range(2, n+1)) # 2부터 n까지의 범위를 set으로 선언
     
     for i in range(2, n+1): # 2부터 n까지 for문 돌면서
-        num -= set(range(2*i, n+1, i)) # 2에 i를 곱한 수부터 num에서 제거
+        num -= set(range(2*i, n+1, i)) # 2에 배수를 전부 제거
     return len(num)    

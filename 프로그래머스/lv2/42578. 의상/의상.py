@@ -1,4 +1,5 @@
 from collections import Counter
+
 def solution(clothes):
     fashion = []
     for i in clothes: # 종류를 하나씩 담아서 저장
